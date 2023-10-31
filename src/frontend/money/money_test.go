@@ -123,10 +123,10 @@ func TestAreSameCurrency(t *testing.T) {
 		want bool
 	}{
 		{"both empty currency", args{mmc(1, 0, ""), mmc(2, 0, "")}, false},
-		{"left empty currency", args{mmc(1, 0, ""), mmc(2, 0, "USD")}, false},
-		{"right empty currency", args{mmc(1, 0, "USD"), mmc(2, 0, "")}, false},
-		{"mismatching", args{mmc(1, 0, "USD"), mmc(2, 0, "CAD")}, false},
-		{"matching", args{mmc(1, 0, "USD"), mmc(2, 0, "USD")}, true},
+		{"left empty currency", args{mmc(1, 0, ""), mmc(2, 0, "INR")}, false},
+		{"right empty currency", args{mmc(1, 0, "INR"), mmc(2, 0, "")}, false},
+		{"mismatching", args{mmc(1, 0, "INR"), mmc(2, 0, "CAD")}, false},
+		{"matching", args{mmc(1, 0, "INR"), mmc(2, 0, "INR")}, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -147,11 +147,11 @@ func TestAreEquals(t *testing.T) {
 		args args
 		want bool
 	}{
-		{"equals", args{mmc(1, 2, "USD"), mmc(1, 2, "USD")}, true},
-		{"mismatching currency", args{mmc(1, 2, "USD"), mmc(1, 2, "CAD")}, false},
-		{"mismatching units", args{mmc(10, 20, "USD"), mmc(1, 20, "USD")}, false},
-		{"mismatching nanos", args{mmc(1, 2, "USD"), mmc(1, 20, "USD")}, false},
-		{"negated", args{mmc(1, 2, "USD"), mmc(-1, -2, "USD")}, false},
+		{"equals", args{mmc(1, 2, "INR"), mmc(1, 2, "INR")}, true},
+		{"mismatching currency", args{mmc(1, 2, "INR"), mmc(1, 2, "CAD")}, false},
+		{"mismatching units", args{mmc(10, 20, "INR"), mmc(1, 20, "INR")}, false},
+		{"mismatching nanos", args{mmc(1, 2, "INR"), mmc(1, 20, "INR")}, false},
+		{"negated", args{mmc(1, 2, "INR"), mmc(-1, -2, "INR")}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
